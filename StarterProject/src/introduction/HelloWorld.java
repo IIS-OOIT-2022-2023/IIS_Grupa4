@@ -17,6 +17,8 @@ public class HelloWorld {
 		}else {
 			System.out.println("a i b su isti");
 		}
+		
+		System.out.println("Hello world");
 	}
 
 }
