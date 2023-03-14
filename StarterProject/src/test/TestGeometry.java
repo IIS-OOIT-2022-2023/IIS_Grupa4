@@ -1,4 +1,5 @@
 package test;
+import geometry.Line;
 import geometry.Point;
 
 public class TestGeometry {
@@ -52,6 +53,7 @@ public class TestGeometry {
 		System.out.println(point.getX()); //podrazumevana vrednost za int je 0
 		System.out.println(point.isSelected());// podrazumevana vrednost za boolean je false
 		
+		
 		//get i set metode omogucavaju pristup privatnim atributima klase
 		point.setX(10);
 		System.out.println(point.getX());
@@ -62,6 +64,12 @@ public class TestGeometry {
 		
 		Point point1 = new Point(20,20);
 		System.out.println(point2.distance(point1));
+		
+		Line line = new Line();
+		System.out.println(line);
+		System.out.println(line.getStartPoint());
+		
+		System.out.println(line.length());
 		
 	}
 
