@@ -40,6 +40,8 @@ public class Line {
 	}
 	
 	public double length() {
+		//duzinu linije racunamo kao udaljenost endPoint tacke i startPoint tacke
+		//koristimo distance metodu definisanu u Point klasi
 		return this.endPoint.distance(this.startPoint);
 	}
 	
