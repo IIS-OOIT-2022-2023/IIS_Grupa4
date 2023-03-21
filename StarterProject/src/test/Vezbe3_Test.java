@@ -42,6 +42,8 @@ public class Vezbe3_Test {
 		// duzine linije l1 umanjene za vrednost zbira x i y
 		// koordinate pocetne tacke linije l1
 		
+		l1.getEndPoint().setX((int)l1.length() - (l1.getStartPoint().getX() + l1.getStartPoint().getY()));
+		
 		// - napraviti pravouganik r1 pozivom podrazumevanog konstruktora
 		// - napraviti krug c1 pozivom podrazumevanog konstruktora
 

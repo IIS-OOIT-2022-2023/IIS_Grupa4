@@ -4,6 +4,7 @@ public class Line {
 	private Point startPoint;
 	private Point endPoint;
 	private boolean selected;
+
 	
 	public Line() {
 		this.startPoint = new Point();
@@ -14,6 +15,13 @@ public class Line {
 		this.startPoint = startPoint;
 		this.endPoint = endPoint;
 	}
+	
+	
+	public Line(Point startPoint, Point endPoint, boolean selected) {
+		this(startPoint, endPoint);
+		this.selected = selected;
+	}
+	
 	
 	public Point getStartPoint() {
 		return this.startPoint;
@@ -44,6 +52,23 @@ public class Line {
 		//koristimo distance metodu definisanu u Point klasi
 		return this.endPoint.distance(this.startPoint);
 	}
+	
+	@Override
+	public String toString() {
+		//return "("+this.startPoint.getX()+","+this.startPoint.getY()+")"+"--> ("+this.endPoint.getX()+","+this.endPoint.getY()+")";
+		return this.startPoint + "-->" + this.endPoint;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Line) {
+			Line l = (Line)obj;
+			return (this.getStartPoint().equals(l.getStartPoint()) && this.getEndPoint().equals(l.getEndPoint()));
+		}else {
+			return false;
+		}
+	}
+
 	
 	
 }
