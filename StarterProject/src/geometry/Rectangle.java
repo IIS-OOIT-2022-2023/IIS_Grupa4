@@ -61,6 +61,15 @@ public class Rectangle {
 		this.selected = selected;
 	}
 	
+	public boolean contains(int x, int y) {
+		return (x > this.upperLeftPoint.getX() && x < this.upperLeftPoint.getX() + this.width &&
+				y > this.upperLeftPoint.getY() && y < this.upperLeftPoint.getY() + this.height);
+	}
+
+	public boolean contains(Point click) {
+		return contains(click.getX(), click.getY());
+	}
+	
 	@Override
 	public String toString() {
 		//return "Upper left point: (" + this.upperLeftPoint.getX() + "," + this.upperLeftPoint.getY() + "), width = "+ this.width + ", height = "+ this.height;

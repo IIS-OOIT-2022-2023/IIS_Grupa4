@@ -53,6 +53,14 @@ public class Line {
 		return this.endPoint.distance(this.startPoint);
 	}
 	
+	public boolean contains(int x, int y) {
+		return this.startPoint.distance(x, y) + this.endPoint.distance(x,y) - this.length() <= 2;
+	}
+
+	public boolean contains(Point click) {
+		return this.startPoint.distance(click) + this.endPoint.distance(click) - this.length() <= 2;
+	}
+	
 	@Override
 	public String toString() {
 		//return "("+this.startPoint.getX()+","+this.startPoint.getY()+")"+"--> ("+this.endPoint.getX()+","+this.endPoint.getY()+")";

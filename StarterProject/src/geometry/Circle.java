@@ -8,6 +8,7 @@ public class Circle {
 
 	public Circle() {
 		this.center = new Point();
+		System.out.println("Poziv konstruktora Circle");
 	}
 
 	public Circle(Point center, int radius) {
@@ -50,6 +51,14 @@ public class Circle {
 
 	public void setSelected(boolean selected) {
 		this.selected = selected;
+	}
+	
+	public boolean contains(int x, int y) {
+		return this.center.distance(x, y) <= this.radius;
+	}
+
+	public boolean contains(Point point) {
+		return this.center.distance(point.getX(), point.getY()) <= this.radius;
 	}
 	
 	@Override
