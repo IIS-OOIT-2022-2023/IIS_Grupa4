@@ -1,9 +1,10 @@
 package geometry;
 
-public class Line {
+import java.awt.Graphics;
+
+public class Line extends Shape{
 	private Point startPoint;
 	private Point endPoint;
-	private boolean selected;
 
 	
 	public Line() {
@@ -19,7 +20,7 @@ public class Line {
 	
 	public Line(Point startPoint, Point endPoint, boolean selected) {
 		this(startPoint, endPoint);
-		this.selected = selected;
+		this.setSelected(selected);
 	}
 	
 	
@@ -39,13 +40,6 @@ public class Line {
 		this.endPoint = point;
 	}
 	
-	public boolean isSelected() {
-		return this.selected;
-	}
-	
-	public void setSelected(boolean selected) {
-		this.selected = selected;
-	}
 	
 	public double length() {
 		//duzinu linije racunamo kao udaljenost endPoint tacke i startPoint tacke
@@ -59,6 +53,10 @@ public class Line {
 
 	public boolean contains(Point click) {
 		return this.startPoint.distance(click) + this.endPoint.distance(click) - this.length() <= 2;
+	}
+	
+	public void draw(Graphics g) {
+		g.drawLine(this.startPoint.getX(), this.startPoint.getY(), this.endPoint.getX(), this.endPoint.getY());
 	}
 	
 	@Override

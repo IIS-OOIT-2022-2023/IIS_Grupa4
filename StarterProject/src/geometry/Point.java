@@ -1,5 +1,7 @@
 package geometry;
 
+import java.awt.Graphics;
+
 /*klasa u Java programu jedinstveno odredjena specifikacijom koja sadrzi
 naziv paketa i naziv klase geometry.Point
 klasa - koncept o-o programskih jezika putem kojeg se modeluje klasa objekata realnog sistema
@@ -7,13 +9,13 @@ modeluje stanja i ponasanja objekata koji pripadaju datoj klasi objekata realnog
 sablon za kreiranje objekata
 slozen tip podatka
 */
-public class Point {
+public class Point extends Shape {
 	/*atributi klase - modeluju stanje objekata
 	inkapsulacija - skrivanje sadrzaja klase (od drugih klasa), ostvaruje se putem specifikatora pristupa
 	specifikatori pristupa: private, protected, public*/
 	private int x;
 	private int y;
-	private boolean selected; //getSelected -> isSelected
+	
 	/**
 	 * Staticka polja koriste se da cuvaju vrednosti nekog obelezja koje je zajednicko za sve objekte
 	 * te klase. Statickim metodama koja nisu javna pristupa se koriscenjem statickih metoda pristupa.
@@ -50,7 +52,7 @@ public class Point {
 	//this() - poziv konstruktora klase, MORA biti prva linija koda unutar konstruktora 
 	public Point(int x, int y, boolean selected) {
 		this(x, y);
-		this.selected = selected;
+		this.setSelected(selected);
 	}
 	
 	/*metode klase - modeluju ponasanje objekata
@@ -75,13 +77,6 @@ public class Point {
 		return this.y;
 	}
 	
-	public void setSelected(boolean selected) {
-		this.selected = selected;
-	}
-	
-	public boolean isSelected() {
-		return this.selected;
-	}
 	
 	public double distance(Point point) {
 		//dy dx -> dx*dx + dy*dy -> sqrt
@@ -105,6 +100,11 @@ public class Point {
 	
 	public boolean contains(Point click) {
 		return this.distance(click) <= 2;
+	}
+	
+	public void draw(Graphics g) {
+		g.drawLine(this.x, this.y - 2, this.x, this.y + 2);
+		g.drawLine(this.x - 2, this.y, this.x + 2, this.y);
 	}
 	
 	/*overriding - redefinisanje metoda 
