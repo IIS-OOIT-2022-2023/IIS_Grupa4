@@ -1,5 +1,6 @@
 package geometry;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 /*klasa u Java programu jedinstveno odredjena specifikacijom koja sadrzi
@@ -34,7 +35,6 @@ public class Point extends Shape {
 	konstruktor nema specifiran tip povratne vrednosti (ni void)*/
 	//Point []
 	public Point() {
-		
 	}
 	
 	/*OVERLOADING - preklapanje naziva metoda, pridruzivanje istog naziva razlicitim metodama
@@ -105,6 +105,12 @@ public class Point extends Shape {
 	public void draw(Graphics g) {
 		g.drawLine(this.x, this.y - 2, this.x, this.y + 2);
 		g.drawLine(this.x - 2, this.y, this.x + 2, this.y);
+		if(isSelected()) {
+			g.setColor(Color.BLUE);
+			g.drawRect(x-2, y-2, 4, 4);
+			g.setColor(Color.black);
+		}
+
 	}
 	
 	/*overriding - redefinisanje metoda 
@@ -132,6 +138,34 @@ public class Point extends Shape {
 	 * */
 	public static void staticMethod() {
 		System.out.println("Staticka metoda");
+	}
+
+
+
+	@Override
+	public void moveBy(int x, int y) {
+		this.x += x;
+		this.y += y;
+
+	}
+
+
+	@Override
+	public void moveTo(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+
+	@Override
+	public int compareTo(Object o) {
+		if(o instanceof Point) {
+			double d1 = this.distance(new Point(0,0));
+			double d2 = ((Point) o).distance(new Point(0,0));
+			return (int)(d1 - d2);
+		}
+		return 0;
+
 	}
 	
 
